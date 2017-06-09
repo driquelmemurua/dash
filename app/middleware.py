@@ -1,13 +1,25 @@
-from flask import session
+from functools import wraps
+from flask import request, Response
 
-class administratorSession(object):
 
-  def __init__(self, app):
-    self.app = app 
+def check_auth(username, password):
+    """This function is called to check if a username /
+    password combination is valid.
+    """
+    return username == 'admin' and password == 'secret'
 
-  def __call__(self, environ, start_response):
-    if not (session['name']):
-      print "I'm in middleware"
-    else:
-      print "fucc"
-    return self.app(environ, start_response)
+def authenticate():
+    """Sends a 401 response that enables basic auth"""
+    return Response(
+    'Could not verify your access level for that URL.\n'
+    'You have to login with proper credentials', 401,
+    {'WWW-Authenticate': 'Basic realm="Login Required"'})
+
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth = request.authorization
+        if not auth or not check_auth(auth.username, auth.password):
+            return authenticate()
+        return f(*args, **kwargs)
+    return decorated

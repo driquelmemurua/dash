@@ -8,7 +8,6 @@ import ast
 #------------FILES--------------#
 from web import routes
 import model
-from middleware import administratorSession
 #-------------------------------#
 #------------------------------------------------------------------#
 
@@ -29,11 +28,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = env['DATABASE_URI']
 db = model.db
 #-------------------------------#
 
-#app.wsgi_app = administratorSession(app.wsgi_app)
-
 #-------------ROUTES------------#
 app.register_blueprint(routes)
 #-------------------------------#
+
 #------------------------------------------------------------------#
 
 #-------------------------------MAIN-------------------------------#
