@@ -27,7 +27,7 @@ def seed(init_db):
                             #Rut            Nombre            Email                 Password#
   alan =    usuario.Usuario('10.010.010-0', 'Alan Brito',     "alan@brito.com",     "123") #1
   aquiles = usuario.Usuario('11.011.011-1', 'Aquiles Brinco', "aquiles@brinco.com", "123") #2
-  elba =    usuario.Usuario('12.012.012-2', 'Elba Zurita',    "elba@zurita.com",    "123") #3
+  elba =    usuario.Usuario('12.012.012-2', 'Elba Lazo',    "elba@zurita.com",    "123") #3
 #-----------JORNADAS------------#
   jornada_alan =    jornada.Jornada() #1
   jornada_aquiles = jornada.Jornada() #2
@@ -74,8 +74,8 @@ def seed(init_db):
   horario_octavo_a =  horario.Horario(1) #2
 #---------BLOQUE-HORARIO--------#
                                       #Horario Bloque Curso Asignatura Profesor#
-  LA_Septimo_Alan =    horario.Horario(1,      1,     1,    1,         1) #1
-  LA_Octavo_Aquiles =  horario.Horario(2,      1,     2,    1,         2) #2
+  LA_septimo_alan =    horario.Horario(1,      1,     1,    1,         1) #1
+  LA_octavo_aquiles =  horario.Horario(2,      1,     2,    1,         2) #2
 
 #----------SUGERENCIAS----------#
                                            #Profesor Titulo                    Contenido#
@@ -90,5 +90,40 @@ def seed(init_db):
 
   init_db.session.add(LA)
   init_db.session.add(MA)
+  init_db.session.add(alan)
+  init_db.session.add(aquiles)
+  init_db.session.add(elba)
+  init_db.session.add(jornada_alan)
+  init_db.session.add(jornada_aquiles)
+  init_db.session.add(jornada_octavo)
+  init_db.session.add(jornada_septimo)
+  init_db.session.add(profesor_alan)
+  init_db.session.add(profesor_aquiles)
+  init_db.session.add(septimo)
+  init_db.session.add(octavo)
+  init_db.session.add(lenguaje)
+  init_db.session.add(septimo_lenguaje)
+  init_db.session.add(octavo_lenguaje)
+  init_db.session.add(lenguaje_septimo_alan)
+  init_db.session.add(lenguaje_octavo_aquiles)
+  init_db.session.add(septimo_a)
+  init_db.session.add(octavo_a)
+  init_db.session.add(LA_alan)
+  init_db.session.add(LA_aquiles)
+  init_db.session.add(LA_septimo_a)
+  init_db.session.add(LA_octavo_a)
+  init_db.session.add(MA_alan)
+  init_db.session.add(MA_septimo_a)
+  init_db.session.add(MA_octavo_a)
+  init_db.session.add(horario_publicado)
+  init_db.session.add(horario_septimo_a)
+  init_db.session.add(horario_octavo_a)
+  init_db.session.add(LA_Septimo_alan)
+  init_db.session.add(LA_octavo_aquiles)
+  init_db.session.add(sugerencia_alan_1)
+  init_db.session.add(sugerencia_alan_2)
+  init_db.session.add(sugerencia_alan_3)
+  init_db.session.add(respuesta_sugerencia_2)
+  init_db.session.add(administrador_elba)
 
   init_db.session.commit()
