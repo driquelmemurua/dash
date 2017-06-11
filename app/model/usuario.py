@@ -1,5 +1,5 @@
 import uuid
-from hashlib
+import hashlib
 from model import db
 
 class Usuario(db.Model):

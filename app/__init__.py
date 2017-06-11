@@ -14,7 +14,7 @@ env = ast.literal_eval(env.read())
 #-------------FILES-------------#
 sys.path.append(env['MODULES_PATH'])
 from router import routes
-from model import db
+from model import *
 #-------------------------------#
 
 #------------------------------------------------------------------#
