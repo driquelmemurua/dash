@@ -15,6 +15,7 @@ env = ast.literal_eval(env.read())
 sys.path.append(env['MODULES_PATH'])
 from router import routes
 from model import *
+from seed import seed
 #-------------------------------#
 
 #------------------------------------------------------------------#
@@ -30,7 +31,7 @@ def main():
   db.init_app(app)
   with app.app_context():
     db.create_all()
-    if usuario.Usuario.query.first() is None:
-      print("welp")
+    if env['SEED']:
+      seed(db)
   app.run(host=env['SERVER_HOST'], port=env['SERVER_PORT'])
 #------------------------------------------------------------------#
