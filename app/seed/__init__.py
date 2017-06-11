@@ -3,22 +3,6 @@ from model import *
 
 def seed(init_db):
   
-  administrador.Administrador.query.delete()
-  asignatura.Asignatura.query.delete()
-  asignatura_profesor.AsignaturaProfesor.query.delete()
-  bloque.Bloque.query.delete()
-  bloque_horario.BloqueHorario.query.delete()
-  bloque_jornada.BloqueJornada.query.delete()
-  curso.Curso.query.delete()
-  grado.Grado.query.delete()
-  grado_asignatura.GradoAsignatura.query.delete()
-  horario.Horario.query.delete()
-  horario_escolar.HorarioEscolar.query.delete()
-  jornada.Jornada.query.delete()
-  profesor.Profesor.query.delete()
-  respuesta.Respuesta.query.delete()
-  sugerencia.Sugerencia.query.delete()
-  usuario.Usuario.query.delete()
 #-----------BLOQUES-------------#
                     #HoraInicio          HoraTermino          Dia#
   LA = bloque.Bloque(datetime.time(8,0), datetime.time(9,30), 'Lunes')  #1
@@ -74,16 +58,16 @@ def seed(init_db):
   horario_octavo_a =  horario.Horario(1) #2
 #---------BLOQUE-HORARIO--------#
                                       #Horario Bloque Curso Asignatura Profesor#
-  LA_septimo_alan =    horario.Horario(1,      1,     1,    1,         1) #1
-  LA_octavo_aquiles =  horario.Horario(2,      1,     2,    1,         2) #2
+  LA_septimo_alan =    bloque_horario.BloqueHorario(1,      1,     1,    1,         1) #1
+  LA_octavo_aquiles =  bloque_horario.BloqueHorario(2,      1,     2,    1,         2) #2
 
 #----------SUGERENCIAS----------#
-                                           #Profesor Titulo                    Contenido#
-  sugerencia_alan_1 = sugerencia.Sugerencia(1,       'Cambio de dia',          'Martes')  #1
-  sugerencia_alan_2 = sugerencia.Sugerencia(1,       'No quiero trabajar',     ':(')      #2
-  sugerencia_alan_3 = sugerencia.Sugerencia(1,       'Cambio de dia otra vez', 'Viernes') #3
+                                           #Profesor Titulo                    Contenido  Estado#
+  sugerencia_alan_1 = sugerencia.Sugerencia(1,       'Cambio de dia',          'Martes',  'Aceptado')  #1
+  sugerencia_alan_2 = sugerencia.Sugerencia(1,       'No quiero trabajar',     ':('    ,  'Rechazado') #2
+  sugerencia_alan_3 = sugerencia.Sugerencia(1,       'Cambio de dia otra vez', 'Viernes', 'Espera')    #3
 #-----------RESPUESTA-----------# 
-  respuesta_sugerencia_2 = bloque_horario.BloqueHorario(2, 'shiaa')
+  respuesta_sugerencia_2 = respuesta.Respuesta(2, 'shiaa')
 #---------ADMINISTRADOR---------#   
                                                   #Usuario#
   administrador_elba = administrador.Administrador(3) #1
@@ -118,7 +102,7 @@ def seed(init_db):
   init_db.session.add(horario_publicado)
   init_db.session.add(horario_septimo_a)
   init_db.session.add(horario_octavo_a)
-  init_db.session.add(LA_Septimo_alan)
+  init_db.session.add(LA_septimo_alan)
   init_db.session.add(LA_octavo_aquiles)
   init_db.session.add(sugerencia_alan_1)
   init_db.session.add(sugerencia_alan_2)

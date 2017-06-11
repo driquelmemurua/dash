@@ -32,6 +32,9 @@ def main():
   with app.app_context():
     db.create_all()
     if env['SEED']:
+      db.reflect()
+      db.drop_all()
+      db.create_all()
       seed(db)
   app.run(host=env['SERVER_HOST'], port=env['SERVER_PORT'])
 #------------------------------------------------------------------#

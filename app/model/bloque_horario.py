@@ -8,8 +8,9 @@ class BloqueHorario(db.Model):
   asignatura_id = db.Column(db.Integer, db.ForeignKey("asignatura.id"), nullable=False)
   profesor_id = db.Column(db.Integer, db.ForeignKey("profesor.id"), nullable=False)
 
-  def __init__(self, horario_id, bloque_id, curso_id, asignatura_profesor_id):
+  def __init__(self, horario_id, bloque_id, curso_id, asignatura_id, profesor_id):
     self.horario_id = horario_id
     self.bloque_id = bloque_id
     self.curso_id = curso_id
-    self.asignatura_profesor_id = asignatura_profesor_id			
+    self.asignatura_id = asignatura_id			
+    self.profesor_id = profesor_id          

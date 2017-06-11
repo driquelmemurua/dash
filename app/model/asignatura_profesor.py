@@ -7,4 +7,4 @@ class AsignaturaProfesor(db.Model):
   
   def __init__(self, grado_asignatura_id, profesor_id):
     self.grado_asignatura_id = grado_asignatura_id
-    self.profesor_id = profes_idor
+    self.profesor_id = profesor_id
