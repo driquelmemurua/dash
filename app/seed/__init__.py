@@ -23,11 +23,11 @@ def seed(init_db):
   profesor_aquiles = profesor.Profesor(2,      2) #2
 #------------GRADOS-------------#
                        #Nombre#
-  septimo = grado.Grado('septimo') #1
-  octavo =  grado.Grado('octavo')  #2
+  septimo = grado.Grado('Septimo') #1
+  octavo =  grado.Grado('Octavo')  #2
 #---------ASIGNATURA------------#
                                   #Nombre#
-  lenguaje = asignatura.Asignatura('lenguaje') #1 
+  lenguaje = asignatura.Asignatura('Lenguaje') #1 
 #-------GRADO-ASIGNATURA--------#
                                                      #Grado Asignatura#
   septimo_lenguaje = grado_asignatura.GradoAsignatura(1,    1) #1
