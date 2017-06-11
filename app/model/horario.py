@@ -2,6 +2,7 @@ from model import db
 
 class Horario(db.Model):
   id = db.Column(db.Integer, primary_key=True)
-  id_horario_escolar = db.Column(db.Integer)
-  def __init__(self, usuario_id):
-    self.usuario_id = usuario_id
+  horario_escolar_id = db.Column(db.Integer, ForeignKey("horario_escolar.id"), nullable=False)
+  
+  def __init__(self, horario_escolar_id):
+    self.horario_escolar_id = horario_escolar_id
