@@ -1,4 +1,5 @@
 venv
+.env
 app/.env
 *.pyc
 app/webservice.db*
