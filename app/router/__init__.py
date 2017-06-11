@@ -4,12 +4,12 @@ from jinja2 import TemplateNotFound
 
 routes = Blueprint('routes', __name__, template_folder='templates')
 
-@routes.route('/', defaults={'page': 'horarios'})
+@routes.route('/', defaults={'page': 'horario'})
 @routes.route('/<page>')
 @auth_profesor
 def profesor(page):
   try:
-    return render_template('%s.html' % page)
+    return render_template('%s-profesor.html' % page)
   except TemplateNotFound:
     abort(404)
 
@@ -18,6 +18,6 @@ def profesor(page):
 @auth_administrador
 def administrador(page):
   try:
-    return render_template('%s.html' % page)
+    return render_template('%s-administrador.html' % page)
   except TemplateNotFound:
     abort(404)
