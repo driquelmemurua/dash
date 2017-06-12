@@ -1,6 +1,7 @@
 #-----------------------------PACKAGES-----------------------------#
 import sys
-from flask import Flask, session
+from flask import Flask
+from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 import ast
 #------------------------------------------------------------------#
@@ -23,8 +24,11 @@ from seed import seed
 def main():
 
   app = Flask(__name__)
-  app.config['DEBUG'] = env['DEBUG']
+  app.config['SESSION_TYPE'] = env['SESSION_TYPE']
+  app.config.from_object(__name__)
   app.secret_key = env['SESSION_SECRET']
+  Session(app)
+  app.config['DEBUG'] = env['DEBUG']
   app.config['SQLALCHEMY_DATABASE_URI'] = env['DATABASE_URI']
   app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
   app.register_blueprint(routes)
