@@ -11,5 +11,5 @@ class Sugerencia(db.Model):
     self.profesor_id = profesor_id
     self.titulo = titulo
     self.contenido = contenido
-    self.estado = profesor_id
+    self.estado = estado
 
