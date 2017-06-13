@@ -36,9 +36,9 @@ def login():
   if request.method == 'POST':
     if not verificar_usuario(request.form['nombre'], request.form['password']):
       return redirect(url_for('routes.login'))
-    if session['usuario'] is 'profesor':
+    if session.get('usuario') is 'profesor':
       return redirect(url_for('routes.profesor'))
-    elif session['usuario'] is 'administrador':
+    elif session.get('usuario') is 'administrador':
       return redirect(url_for('routes.horarios'))
   else:
     return render_template('login.html')
@@ -67,7 +67,7 @@ def sugerencias():
 @routes.route('/administrador/horarios')
 def horarios():
   try:
-    if session['usuario'] != 'administrador':
+    if session.get('usuario') != 'administrador':
       return redirect(url_for('routes.logout'))
     x = []
     hc = HorarioEscolar.query.all()
@@ -95,7 +95,7 @@ def horarios():
 @routes.route('/administrador/<page>')
 def administrador(page):
   try:
-    if session['usuario'] != 'administrador':
+    if session.get('usuario') != 'administrador':
   	  return redirect(url_for('routes.logout'))
     return render_template('%s-administrador.html' % page)
   except TemplateNotFound:
@@ -105,7 +105,7 @@ def administrador(page):
 @routes.route('/<page>')
 def profesor(page):
   try:
-    if session['usuario'] != 'profesor':
+    if session.get('usuario') != 'profesor':
   	  return redirect(url_for('routes.logout'))
     return render_template('%s-profesor.html' % page)
   except TemplateNotFound:
